@@ -5,23 +5,6 @@ def unique(number_list):
             number_set.add(number)
     return number_set
 
-#def bio():
-#    n = int(input("Введите число элементов в генеалогическом дереве: "))
-#    tree = {}
-#    for i in range(1, n):
-#        child, parent = input(f"Введите имя потомка и родителя ({i}): ").split()
-#    tree[parent] = child
-#    queue = sorted(list(tree.keys()))
-#    while queue:
-#        person = queue.pop(0)
-#        height = 0
-#        if person in tree:
-#            children = tree[person].split()
-#            if children:
-#                queue.extend(children)
-#                height += 1
-#        print(f"{person}: {height}")
-
 def height(man):
     if man not in p_tree:
         return 0
