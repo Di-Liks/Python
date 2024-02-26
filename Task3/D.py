@@ -28,6 +28,15 @@ def check_intersection(rectangle1, rectangle2):
     y_overlap = not (rectangle1.point2.y < rectangle2.point1.y or rectangle2.point2.y < rectangle1.point1.y)
     return x_overlap and y_overlap
 
+class Square(Rectangle):
+    def __init__(self, point1, point2):
+        super().__init__(point1, point2)
+        self.check_square()
+
+    def check_square(self):
+        if abs(self.point1.x - self.point2.x) != abs(self.point1.y - self.point2.y):
+            raise ValueError("Одна из фигур должна быть квадратом")
+
 # Пример использования:
 
 try:
@@ -36,14 +45,16 @@ try:
     point_c = Point(2, 2)
     point_d = Point(5, 5)
 
-    rectangle1 = Rectangle(point_a, point_b)
+    square1 = Square(point_a, point_b)  # Используем квадрат вместо прямоугольника
     rectangle2 = Rectangle(point_c, point_d)
 
-    intersection_result = check_intersection(rectangle1, rectangle2)
-    areas_comparison = compare_areas(rectangle1, rectangle2)
+    intersection_result = check_intersection(square1, rectangle2)
+    areas_comparison = compare_areas(square1, rectangle2)
 
     print("Пересекаются" if intersection_result else "Не пересекаются")
     print(areas_comparison)
 
+except ValueError as ve:
+    print(f"Ошибка: {ve}")
 except Exception as e:
     print(f"Ошибка: {e}")
