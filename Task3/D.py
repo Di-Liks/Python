@@ -3,6 +3,15 @@ class Point:
         self.x = x
         self.y = y
 
+def get_point_from_input():
+    try:
+        x = float(input("Введите координату x: "))
+        y = float(input("Введите координату y: "))
+        return Point(x, y)
+    except ValueError:
+        print("Некорректный ввод. Пожалуйста, введите числовые значения.")
+        return get_point_from_input()
+
 class Rectangle:
     def __init__(self, point1, point2):
         self.point1 = point1
@@ -40,10 +49,13 @@ class Square(Rectangle):
 # Пример использования:
 
 try:
-    point_a = Point(0, 0)
-    point_b = Point(3, 3)
-    point_c = Point(2, 2)
-    point_d = Point(5, 5)
+    print("Введите координаты точек для первой фигуры:")
+    point_a = get_point_from_input()
+    point_b = get_point_from_input()
+
+    print("Введите координаты точек для второй фигуры:")
+    point_c = get_point_from_input()
+    point_d = get_point_from_input()
 
     square1 = Square(point_a, point_b)  # Используем квадрат вместо прямоугольника
     rectangle2 = Rectangle(point_c, point_d)
