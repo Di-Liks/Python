@@ -3,7 +3,7 @@ import re
 task = int(input("Выберите номер задания от 1 до 3: "))
 match task:
     case 1:
-        file = open("dateNum.txt")
+        file = open("DateNum.txt")
         s = file.readlines()
         n = int(s[0])
         max_ch = 0
